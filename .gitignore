@@ -2,3 +2,6 @@
 # avoid including test spf files
 *.spf
 *.html
+.DS_Store
+.vscode
+
