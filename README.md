@@ -13,7 +13,6 @@ The SPF format is a simple format for defining a startpage. It is a text file wi
 *<category_name> <-- denotes the start of a new category
 <url>|<text>|<description> <-- denotes a link
 ```
-where `*` denotes the start of a new category, and `|` separates the link's URL from its text.
 
 ## Features 
 - Some links
