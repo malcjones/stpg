@@ -6,7 +6,7 @@ fn main() {
     let input_name = std::env::args().nth(1);
     let output_name = std::env::args().nth(2);
     if input_name.is_none() || output_name.is_none() {
-        println!("usage: stpg <input> <output>");
+        println!("usage: stpga <input> <output>");
         return;
     }
     let input_name = input_name.unwrap();
