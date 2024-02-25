@@ -18,20 +18,34 @@ fn main() {
         return;
     }
     
-    let page = render_page(categories.unwrap());
+    let page = render_page(Startpage {
+        categories: categories.clone().unwrap(),
+    });
+    let page = page.into_bytes();
+    let mut cfg = minify_html::Cfg::new();
+    cfg.keep_comments = false;
+    cfg.minify_js = true;
+    cfg.do_not_minify_doctype = true;
+    cfg.minify_css = true;
+    let page = minify_html::minify(&page, &cfg);
     std::fs::write(output_name.clone(), page).expect("could not write file");
+    std::fs::write(output_name.clone() + ".txt", category_tree(categories.unwrap())).expect("could not write file");
 
     println!("wrote page to {}", output_name);
 }
 
-fn render_page(categories: Vec<site::Category>) -> String {
+pub struct Startpage {
+    pub categories: Vec<site::Category>,
+}
+
+fn render_page(startpage: Startpage) -> String {
     println!(
         "making page (this should only happen once) from {}",
         std::env::args().nth(1).unwrap()
     );
-    println!("categories: {}", categories.len());
-    println!("{}", category_tree(categories.clone()));
-    start_page(categories).into_string()
+    println!("categories: {}", startpage.categories.len());
+    let page = start_page(startpage.categories);
+    page.into_string()
 }
 
 fn category_tree(category: Vec<site::Category>) -> String {
@@ -44,7 +58,7 @@ fn category_tree(category: Vec<site::Category>) -> String {
             cat.name
         ));
         for link in cat.links {
-            tree.push_str(&format!("  - {}\n", link.text));
+            tree.push_str(&format!("  - {}: {}\n", link.title, link.description));
         }
     }
     tree

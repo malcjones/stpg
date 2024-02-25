@@ -32,7 +32,7 @@ fn header(title: &str) -> Markup {
 fn footer(cat_count: usize, link_count: usize) -> Markup {
     html! {
         footer {
-            "this site uses " a href="https://maud.lambda.xyz" { "maud" } " | categories: " (cat_count) " | links: " (link_count)
+            "this site uses " a href="https://maud.lambda.xyz" { "maud" } " | categories: " (cat_count) " | links: " (link_count) " | generated with " a href="https://github.com/malcjones/stpg" { "stpg" }
         }
     }
 }

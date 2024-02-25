@@ -6,7 +6,8 @@ pub mod style;
 #[derive(Debug, Clone)]
 pub struct Link {
     pub url: String,
-    pub text: String,
+    pub title: String,
+    pub description: String,
 }
 
 #[derive(Debug, Clone)]
@@ -20,11 +21,12 @@ pub fn start_page(categories: Vec<Category>) -> Markup {
         div class="links" {
             @for category in categories.clone() {
                 div class="category" {
-                    h2 { (category_icon(&category.name)) }
+                    h2 { (category_icon(&category.name)) span class="small" { (category.name) } }
                     ul {
                         @for link in category.links {
                             li {
-                                a href=(link.url) { (link.text) }
+                                // Adding a title attribute for the tooltip
+                                a href=(link.url) title=(link.description) { (link.title) }
                             }
                         }
                     }
@@ -35,11 +37,14 @@ pub fn start_page(categories: Vec<Category>) -> Markup {
     layout::layout("stpg", content, categories)
 }
 
+
 pub fn category_icon(category: &str) -> &'static str {
     match category {
         "Developer" => "👨‍💻",
         "Important" => "🌟",
         "Finance" => "💰",
+        "Programming" => "⚙️",
+        "Torrent" => "🌊",
         _ => "❓",
     }
 }

@@ -26,9 +26,13 @@ pub fn from_file(path: &Path) -> Option<Vec<Category>> {
             // if we are in a category, collect the url & text into a link
             let mut parts = line.split('|');
             let url = parts.next()?.to_string();
-            let text = parts.next()?.to_string();
-
-            category.links.push(Link { url, text });
+            let title = parts.next()?.to_string();
+            let description = parts.next().unwrap_or("").to_string();
+            category.links.push(Link {
+                url,
+                title,
+                description,
+            });
         }
     }
     if let Some(category) = current_category {

@@ -1,72 +1,121 @@
+/* Global styles */
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #fafafa;
+    color: #333;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: #fff;
-}
-
-
+/* Header styles */
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    padding: 0 20px;
+}
+
+/* Main content styles */
 main {
-    padding: 10px;
-    margin: auto;
-    width: 80%;
+    padding-top: 60px; /* Adjust based on header height */
 }
 
+/* Footer styles */
+footer {
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* Links container styles */
 .links {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Individual category box styles */
+.category {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 15px; /* Increased padding */
+    width: auto;
+    min-width: 250px; /* Increased minimum width */
+    max-width: 300px; /* You can adjust this as needed */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin: 10px;
 }
 
 a {
-    color: #333;
+    color: #0056b3;
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
 
-a:hover {
-    color: #666;
-}
-
-.category {
-    background-color: #f0f0f0;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-.category a {
-    color: #333;
-    text-decoration: underline;
+.category:hover {
+    transform: translateY(-5px);
 }
 
 .category h2 {
-    margin: 0;
-    text-align: center;
+    margin: 0 0 10px 0;
+    color: #333;
 }
 
-ul {
-    list-style: none;
+.category h2 .small {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Styling for links within categories */
+.category ul {
+    list-style-type: none;
     padding: 0;
 }
 
-li {
-    margin: 10px 0;
+.category li a {
+    color: #0056b3; /* Updated link color */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.category li a:hover, .category li a:focus {
+    color: #003974; /* Darker shade for hover and focus */
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .category h2 {
+        font-size: 1.3rem;
+    }
+
+    .category h2 .small {
+        font-size: 0.7rem;
+    }
+
 }

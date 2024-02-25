@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 maud = { version = "0.26.0" }
+minify-html = "0.15.0"
