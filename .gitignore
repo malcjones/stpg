@@ -1,0 +1,4 @@
+/target
+# avoid including test spf files
+*.spf
+*.html
