@@ -10,12 +10,8 @@ a small startpage for your (probably my) browser
 ## SPF Format
 The SPF format is a simple format for defining a startpage. It is a text file with the following format:
 ```
-*<category1_name>
-<category1_link1_url>|<category1_link1_text>
-<category1_link2_url>|<category1_link2_text>
-*<category2_name>
-<category2_link1_url>|<category2_link1_text>
-<category2_link2_url>|<category2_link2_text>
+*<category_name> <-- denotes the start of a new category
+<url>|<text>|<description> <-- denotes a link
 ```
 where `*` denotes the start of a new category, and `|` separates the link's URL from its text.
 
